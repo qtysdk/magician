@@ -17,8 +17,9 @@ def api_GameCreate():
     match game_create(player):
         case 'start game':
             return {"msg": game_create(player)}, 201
-        case 'players is not enough':
-        case 'players is over 5':
+        case 'players is not enough' | 'players is over 5':
             return {"msg": game_create(player)}, 400
+        case _:
+            return {"msg": "Unknown error"}, 500
     
         
